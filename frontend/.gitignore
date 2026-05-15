@@ -1,0 +1,47 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment variables
+.env
+
+# macOS system files
+.DS_Store
+
+# Build output
+build/
+dist/
+
+# Logs
+logs
+*.log
+logs/*.log
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# IDEs & editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# React coverage reports
+coverage/
+
+# Optional npm cache files
+*.tgz
+
+# OS generated files
+Thumbs.db
+
+# Parcel/Next.js cache
+.cache/
+.next/
+
+# Uploads (if saving locally, e.g., for testing images)
+uploads/
+public/uploads/
