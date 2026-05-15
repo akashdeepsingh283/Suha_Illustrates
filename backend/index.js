@@ -99,20 +99,25 @@ app.post('/contact', async (req, res) => {
 });
 
 app.post('/order', async (req, res) => {
-  const { name, email, project, budget, message } = req.body;
-
-  if (!name || !email || !project || !budget || !message) {
-    return res.status(400).json({ message: 'Missing fields' });
-  }
+  console.log("ORDER ROUTE HIT");
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
+    console.log("BODY:", req.body);
+
+    return res.status(200).json({
+      success: true,
+      message: "Route working"
     });
+
+  } catch (err) {
+    console.error("ORDER ERROR:", err);
+
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
+});
 
     const mailOptions = {
       from: `"Portfolio Website" <${process.env.EMAIL_USER}>`,
