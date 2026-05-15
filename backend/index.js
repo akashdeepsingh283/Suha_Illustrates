@@ -1,36 +1,37 @@
-require('dotenv').config();
-const nodemailer = require('nodemailer');
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const User = require('./models/user'); // Import the User model
-const Contact = require('./models/contact'); // Import the Contact model
-const cloudinary = require('cloudinary').v2;
+require("dotenv").config();
+const nodemailer = require("nodemailer");
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const User = require("./models/user"); // Import the User model
+const Contact = require("./models/contact"); // Import the Contact model
+const cloudinary = require("cloudinary").v2;
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 // MongoDB Atlas connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log("✅ MongoDB Atlas connected"))
-.catch(err => console.error("❌ MongoDB connection failed:", err));
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("✅ MongoDB Atlas connected"))
+  .catch((err) => console.error("❌ MongoDB connection failed:", err));
 
 // Example route
-app.get('/', (req, res) => {
-    res.send("Hello from Express + MongoDB Atlas!");
+app.get("/", (req, res) => {
+  res.send("Hello from Express + MongoDB Atlas!");
 });
 
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email }).select('+password');
+    const user = await User.findOne({ email }).select("+password");
 
     if (!user) return res.status(404).json({ message: "User not found" });
 
@@ -41,7 +42,7 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign(
       { userId: user._id, email: user.email },
       process.env.JWT_SECRET,
-      { expiresIn: '7d' } // or shorter/longer as needed
+      { expiresIn: "7d" }, // or shorter/longer as needed
     );
 
     // Exclude password before sending
@@ -59,28 +60,26 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.post("/signup", async (req, res) => {
+  const { name, email, password } = req.body;
 
-
-app.post('/signup', async (req, res) => {
-    const { name, email, password } = req.body;
-
-    try {
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ error: "Email already in use" });
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await User.create({ name, email, password: hashedPassword });
-
-        res.status(201).json({ message: "User created successfully", user });
-    } catch (err) {
-        console.error("Error creating user:", err);
-        res.status(500).json({ error: "User creation failed" });
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "Email already in use" });
     }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await User.create({ name, email, password: hashedPassword });
+
+    res.status(201).json({ message: "User created successfully", user });
+  } catch (err) {
+    console.error("Error creating user:", err);
+    res.status(500).json({ error: "User creation failed" });
+  }
 });
 
-app.post('/contact', async (req, res) => {
+app.post("/contact", async (req, res) => {
   const { name, email, project, budget, message } = req.body;
 
   try {
@@ -98,27 +97,32 @@ app.post('/contact', async (req, res) => {
   }
 });
 
-app.post('/order', async (req, res) => {
-  console.log("ORDER ROUTE HIT");
+app.post("/order", async (req, res) => {
+  const { name, email, project, budget, message } = req.body;
+
+  if (!name || !email || !project || !budget || !message) {
+    return res.status(400).json({ message: "Missing fields" });
+  }
 
   try {
-    console.log("BODY:", req.body);
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
 
-    return res.status(200).json({
-      success: true,
-      message: "Route working"
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+
+      tls: {
+        rejectUnauthorized: false,
+      },
+
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 10000,
     });
-
-  } catch (err) {
-    console.error("ORDER ERROR:", err);
-
-    res.status(500).json({
-      success: false,
-      error: err.message
-    });
-  }
-});
-
     const mailOptions = {
       from: `"Portfolio Website" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
@@ -160,14 +164,12 @@ app.post('/order', async (req, res) => {
     };
 
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: 'Email sent successfully!' });
+    res.status(200).json({ message: "Email sent successfully!" });
   } catch (err) {
-    console.error('❌ Email error:', err);
-    res.status(500).json({ message: 'Failed to send email.' });
+    console.error("❌ Email error:", err);
+    res.status(500).json({ message: "Failed to send email." });
   }
 });
-
-
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -175,18 +177,18 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.get('/cloudinary-images', async (req, res) => {
+app.get("/cloudinary-images", async (req, res) => {
   try {
     const { resources } = await cloudinary.search
-      .expression('folder:portfolio') // only images in 'portfolio' folder
-      .sort_by('created_at', 'desc')
+      .expression("folder:portfolio") // only images in 'portfolio' folder
+      .sort_by("created_at", "desc")
       .max_results(50)
       .execute();
 
-    const images = resources.map(img => ({
+    const images = resources.map((img) => ({
       id: img.asset_id,
-      title: img.public_id.split('/').pop().replace(/[-_]/g, ' '),
-      category: 'digital', // Or derive from metadata/tags
+      title: img.public_id.split("/").pop().replace(/[-_]/g, " "),
+      category: "digital", // Or derive from metadata/tags
       image: img.secure_url,
       likes: Math.floor(Math.random() * 200) + 100,
       views: Math.floor(Math.random() * 2000) + 500,
@@ -199,9 +201,7 @@ app.get('/cloudinary-images', async (req, res) => {
   }
 });
 
-
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
