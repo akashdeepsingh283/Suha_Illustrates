@@ -45,6 +45,7 @@ const Portfolio: React.FC = () => {
     { id: 'illustrations', label: 'Illustrations' },
     { id: 'commissions', label: 'Commissions' },
   ];
+
   const portfolioItems = [
     { id: 1, category: 'portraits', image: img1, likes: 87, views: 66 },
     { id: 2, category: 'commissions', image: img2, likes: 42, views: 73 },
@@ -78,104 +79,148 @@ const Portfolio: React.FC = () => {
   ];
 
   useEffect(() => {
-    const fetchCloudinaryImages = async () => {
-      const url = `${backendURL}/cloudinary-images`;
-      try {
-        const res = await fetch(url);
-        const text = await res.text();
-        try {
-          const data = JSON.parse(text);
-          setCloudImages(data);
-        } catch (parseError) {
-          console.error("JSON parse error:", text);
-        }
-      } catch (err) {
-        console.error("Fetch error:", err);
-      }
-    };
-    fetchCloudinaryImages();
+    fetch(`${backendURL}/cloudinary-images`)
+      .then(r => r.json())
+      .then(data => setCloudImages(data))
+      .catch(() => {});
   }, []);
 
   const allItems = [...portfolioItems, ...cloudImages.map((item, idx) => ({ ...item, id: 1000 + idx }))];
-  const filteredItems = activeFilter === 'all' ? allItems : allItems.filter(item => item.category === activeFilter);
+  const filteredItems = activeFilter === 'all' ? allItems : allItems.filter(i => i.category === activeFilter);
   const itemsToDisplay = showAll ? filteredItems : filteredItems.slice(0, 6);
 
   return (
-    <section id="portfolio" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">Portfolio</span>
+    <section id="portfolio" style={{ backgroundColor: 'var(--vanilla)', padding: '7rem 0' }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
+            <span style={{ color: 'var(--tobacco)', fontSize: '0.72rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif' }}>
+              Selected Works
+            </span>
+            <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
+          </div>
+          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 400, color: 'var(--mahogany)' }}>
+            My <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Portfolio</em>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore a curated selection of my recent work, showcasing various styles and techniques developed over years of passionate artistic practice.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: 520, margin: '1rem auto 0', lineHeight: 1.75, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
+            A curated selection of recent work showcasing various styles developed through passionate artistic practice.
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map(filter => (
+        {/* Filter buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {filters.map(f => (
             <button
-              key={filter.id}
-              onClick={() => {
-                setActiveFilter(filter.id);
-                setShowAll(false);
+              key={f.id}
+              onClick={() => { setActiveFilter(f.id); setShowAll(false); }}
+              style={{
+                padding: '8px 20px',
+                borderRadius: 2,
+                fontSize: '0.72rem',
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+                fontFamily: 'DM Sans, sans-serif',
+                fontWeight: 400,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                backgroundColor: activeFilter === f.id ? 'var(--mahogany)' : 'transparent',
+                color: activeFilter === f.id ? 'var(--vanilla)' : 'var(--mahogany)',
+                border: activeFilter === f.id ? '1px solid var(--mahogany)' : '1px solid var(--sand)',
               }}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-200 ${
-                activeFilter === filter.id
-                  ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
             >
-              {filter.label}
+              {f.label}
             </button>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {itemsToDisplay.map((item, idx) => (
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {itemsToDisplay.map((item) => (
             <div
               key={item.id}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              style={{
+                position: 'relative',
+                borderRadius: 2,
+                overflow: 'hidden',
+                backgroundColor: 'var(--sand)',
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 16px 48px rgba(88,71,56,0.15)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+              className="group"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div style={{ aspectRatio: '4/3', overflow: 'hidden' }}>
                 <img
                   src={item.image}
                   alt={item.title || ''}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white text-xl font-bold mb-2">{item.title}</h3>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4 text-white/80 text-sm">
-                      <div className="flex items-center space-x-1">
-                        <Heart className="h-4 w-4" />
-                        <span>{item.likes}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Eye className="h-4 w-4" />
-                        <span>{item.views}</span>
-                      </div>
+
+              {/* Hover overlay */}
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(88,71,56,0.85) 0%, transparent 50%)',
+                  opacity: 0,
+                  transition: 'opacity 0.3s ease',
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  padding: '1.2rem',
+                }}
+                className="group-hover:opacity-100"
+                onMouseEnter={e => (e.currentTarget.style.opacity = '1')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '0')}
+              >
+                <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', gap: 12, color: 'var(--sand)', fontSize: '0.78rem', fontFamily: 'DM Sans, sans-serif' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <Heart size={12} />
+                      <span>{item.likes}</span>
                     </div>
-                    <button
-                      className="bg-white/20 backdrop-blur-sm text-white p-2 rounded-full hover:bg-white/30 transition-colors"
-                      onClick={() => setModalImageIndex(filteredItems.findIndex(i => i.id === item.id))}
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                      <Eye size={12} />
+                      <span>{item.views}</span>
+                    </div>
                   </div>
+                  <button
+                    onClick={() => setModalImageIndex(filteredItems.findIndex(i => i.id === item.id))}
+                    style={{ width: 32, height: 32, borderRadius: 2, backgroundColor: 'var(--vanilla)', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                  >
+                    <ExternalLink size={13} color="var(--mahogany)" />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
+        {/* Show more */}
         {filteredItems.length > 6 && (
-          <div className="text-center mt-16">
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <button
               onClick={() => setShowAll(!showAll)}
-              className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-amber-700 hover:to-orange-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              style={{
+                padding: '13px 36px',
+                backgroundColor: 'transparent',
+                color: 'var(--mahogany)',
+                border: '1px solid var(--tobacco)',
+                borderRadius: 2,
+                fontSize: '0.78rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                fontFamily: 'DM Sans, sans-serif',
+                fontWeight: 400,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = 'var(--mahogany)'; e.currentTarget.style.color = 'var(--vanilla)'; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--mahogany)'; }}
             >
               {showAll ? 'Show Less' : 'View Full Gallery'}
             </button>
@@ -183,31 +228,25 @@ const Portfolio: React.FC = () => {
         )}
       </div>
 
+      {/* Modal */}
       {modalImageIndex !== null && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-          <button
-            onClick={() => setModalImageIndex(null)}
-            className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 p-1 rounded-full"
-          >
-            <X className="h-5 w-5" />
+        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(46,31,21,0.92)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9000 }}>
+          <button onClick={() => setModalImageIndex(null)} style={{ position: 'absolute', top: 20, right: 20, background: 'rgba(241,234,218,0.15)', border: '1px solid rgba(241,234,218,0.3)', borderRadius: 2, padding: 8, cursor: 'pointer', color: 'var(--vanilla)' }}>
+            <X size={16} />
           </button>
-          <div className="relative w-[90%] max-w-4xl max-h-[90vh] flex items-center">
+          <div style={{ position: 'relative', width: '90%', maxWidth: '900px', maxHeight: '90vh', display: 'flex', alignItems: 'center' }}>
             <button
-              onClick={() => setModalImageIndex(prev => (prev! > 0 ? prev! - 1 : prev))}
-              className="absolute left-0 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-2 rounded-full"
+              onClick={() => setModalImageIndex(p => (p! > 0 ? p! - 1 : p))}
+              style={{ position: 'absolute', left: -44, background: 'rgba(241,234,218,0.1)', border: '1px solid rgba(241,234,218,0.2)', borderRadius: 2, padding: 8, cursor: 'pointer', color: 'var(--vanilla)', zIndex: 1 }}
             >
-              <ChevronLeft className="h-6 w-6" />
+              <ChevronLeft size={18} />
             </button>
-            <img
-              src={filteredItems[modalImageIndex].image}
-              alt="Preview"
-              className="mx-auto max-h-[90vh] rounded-xl shadow-xl"
-            />
+            <img src={filteredItems[modalImageIndex].image} alt="Preview" style={{ maxHeight: '90vh', maxWidth: '100%', borderRadius: 2, objectFit: 'contain', margin: '0 auto', display: 'block' }} />
             <button
-              onClick={() => setModalImageIndex(prev => (prev! < filteredItems.length - 1 ? prev! + 1 : prev))}
-              className="absolute right-0 top-1/2 -translate-y-1/2 text-white bg-black/50 hover:bg-black/70 p-2 rounded-full"
+              onClick={() => setModalImageIndex(p => (p! < filteredItems.length - 1 ? p! + 1 : p))}
+              style={{ position: 'absolute', right: -44, background: 'rgba(241,234,218,0.1)', border: '1px solid rgba(241,234,218,0.2)', borderRadius: 2, padding: 8, cursor: 'pointer', color: 'var(--vanilla)', zIndex: 1 }}
             >
-              <ChevronRight className="h-6 w-6" />
+              <ChevronRight size={18} />
             </button>
           </div>
         </div>

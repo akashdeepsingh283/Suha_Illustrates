@@ -2,7 +2,6 @@ import React from 'react';
 import { Palette, User, Layers, Zap, CheckCircle } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 
-
 const Services: React.FC = () => {
   const services = [
     {
@@ -10,12 +9,7 @@ const Services: React.FC = () => {
       title: 'Digital Illustrations',
       description: 'Custom digital artwork for books, magazines, and personal projects',
       price: 'From $100',
-      features: [
-        'High-resolution files',
-        'Multiple revisions',
-        'Commercial license',
-        '48-hour delivery',
-      ],
+      features: ['High-resolution files', 'Multiple revisions', 'Commercial license', '48-hour delivery'],
       popular: false,
     },
     {
@@ -23,12 +17,7 @@ const Services: React.FC = () => {
       title: 'Portrait Commissions',
       description: 'Personalized portraits that capture personality and emotion',
       price: 'From $50',
-      features: [
-        'Multiple subjects',
-        'Various styles available',
-        'Print-ready quality',
-        'Digital delivery',
-      ],
+      features: ['Multiple subjects', 'Various styles available', 'Print-ready quality', 'Digital delivery'],
       popular: true,
     },
     {
@@ -36,12 +25,7 @@ const Services: React.FC = () => {
       title: 'Character Design',
       description: 'Unique character creation for games, stories, and branding',
       price: 'From $100',
-      features: [
-        'Concept variations',
-        'Turnaround sheets',
-        'Style consistency',
-        'Full licensing',
-      ],
+      features: ['Concept variations', 'Turnaround sheets', 'Style consistency', 'Full licensing'],
       popular: false,
     },
     {
@@ -49,99 +33,143 @@ const Services: React.FC = () => {
       title: 'Rush Orders',
       description: 'Express delivery for urgent projects without compromising quality',
       price: '+50% fee',
-      features: [
-        '24-hour delivery',
-        'Priority support',
-        'Real-time updates',
-        'Quality guarantee',
-      ],
+      features: ['24-hour delivery', 'Priority support', 'Real-time updates', 'Quality guarantee'],
       popular: false,
     },
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" style={{ backgroundColor: 'var(--vanilla)', padding: '7rem 0' }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">Services</span>
+          <div className="flex items-center justify-center space-x-3 mb-4">
+            <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
+            <span style={{ color: 'var(--tobacco)', fontSize: '0.72rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif' }}>
+              What I Offer
+            </span>
+            <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
+          </div>
+          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 400, color: 'var(--mahogany)' }}>
+            My <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Services</em>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            I offer a comprehensive range of artistic services tailored to bring your vision to life. 
-            Each project is approached with dedication and attention to detail.
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: 560, margin: '1rem auto 0', lineHeight: 1.75, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
+            A comprehensive range of artistic services, each approached with dedication and attention to detail.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {services.map((service, index) => (
+        {/* Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {services.map((s, i) => (
             <div
-              key={index}
-              className={`relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 ${
-                service.popular 
-                  ? 'border-amber-400 transform scale-105' 
-                  : 'border-gray-100 hover:border-amber-200'
-              }`}
+              key={i}
+              style={{
+                backgroundColor: s.popular ? 'var(--mahogany)' : 'var(--white-warm)',
+                border: s.popular ? 'none' : '1px solid var(--sand)',
+                borderRadius: 4,
+                padding: '2rem 1.5rem',
+                position: 'relative',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(88,71,56,0.12)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
             >
-              {service.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium">
-                    Most Popular
-                  </span>
+              {s.popular && (
+                <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', backgroundColor: 'var(--tobacco)', color: 'var(--vanilla)', padding: '4px 16px', borderRadius: 1, fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif', whiteSpace: 'nowrap' }}>
+                  Most Popular
                 </div>
               )}
 
-              <div className="text-center mb-6">
-                <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-4 rounded-xl inline-block mb-4">
-                  <service.icon className="h-8 w-8 text-white" />
+              <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
+                <div
+                  style={{
+                    width: 48,
+                    height: 48,
+                    backgroundColor: s.popular ? 'rgba(241,234,218,0.15)' : 'var(--vanilla)',
+                    border: s.popular ? '1px solid rgba(241,234,218,0.2)' : '1px solid var(--sand)',
+                    borderRadius: 2,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  <s.icon size={20} color={s.popular ? 'var(--vanilla)' : 'var(--mahogany)'} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{service.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">{service.description}</p>
-                <div className="text-2xl font-bold text-amber-600">{service.price}</div>
+                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.2rem', fontWeight: 600, color: s.popular ? 'var(--vanilla)' : 'var(--mahogany)', marginBottom: 6 }}>
+                  {s.title}
+                </h3>
+                <p style={{ fontSize: '0.8rem', color: s.popular ? 'var(--sand)' : 'var(--text-muted)', lineHeight: 1.6, fontFamily: 'DM Sans, sans-serif', fontWeight: 300, marginBottom: '0.75rem' }}>
+                  {s.description}
+                </p>
+                <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.5rem', fontWeight: 700, color: s.popular ? 'var(--tobacco)' : 'var(--mahogany)' }}>
+                  {s.price}
+                </div>
               </div>
 
-              <div className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">{feature}</span>
-                  </div>
+              <ul className="space-y-2 mb-6">
+                {s.features.map((f, fi) => (
+                  <li key={fi} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <CheckCircle size={13} color={s.popular ? 'var(--tobacco)' : 'var(--mahogany)'} />
+                    <span style={{ fontSize: '0.78rem', color: s.popular ? 'var(--sand)' : 'var(--text-muted)', fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>{f}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
 
-<HashLink
-  to="/#contact"
-  className={`block text-center mt-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
-    service.popular
-      ? 'bg-gradient-to-r from-amber-600 to-orange-600 text-white hover:from-amber-700 hover:to-orange-700 shadow-lg hover:shadow-xl'
-      : 'border-2 border-gray-300 text-gray-700 hover:border-amber-600 hover:text-amber-600'
-  }`}
->
-  Get Started
-</HashLink>
-
+              <HashLink to="/#contact">
+                <button
+                  style={{
+                    width: '100%',
+                    padding: '11px',
+                    borderRadius: 2,
+                    fontSize: '0.75rem',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    fontFamily: 'DM Sans, sans-serif',
+                    fontWeight: 400,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    backgroundColor: s.popular ? 'var(--tobacco)' : 'transparent',
+                    color: s.popular ? 'var(--vanilla)' : 'var(--mahogany)',
+                    border: s.popular ? 'none' : '1px solid var(--tobacco)',
+                  }}
+                >
+                  Get Started
+                </button>
+              </HashLink>
             </div>
           ))}
         </div>
 
-        {/* Process Section */}
-        <div className="bg-gray-50 rounded-3xl p-8 md:p-12">
-          <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">My Creative Process</h3>
-          
+        {/* Process */}
+        <div style={{ backgroundColor: 'var(--white-warm)', border: '1px solid var(--sand)', borderRadius: 4, padding: '3rem' }}>
+          <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '2rem', fontWeight: 600, color: 'var(--mahogany)', textAlign: 'center', marginBottom: '2.5rem' }}>
+            My Creative Process
+          </h3>
           <div className="grid md:grid-cols-4 gap-8">
             {[
               { step: '01', title: 'Consultation', desc: 'We discuss your vision and requirements' },
-              { step: '02', title: 'Concept', desc: 'I create initial sketches and concepts' },
+              { step: '02', title: 'Concept', desc: 'Initial sketches and concept exploration' },
               { step: '03', title: 'Creation', desc: 'Your artwork comes to life with precision' },
-              { step: '04', title: 'Delivery', desc: 'Final files delivered in your preferred format' },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gradient-to-br from-amber-400 to-orange-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {item.step}
+              { step: '04', title: 'Delivery', desc: 'Final files in your preferred format' },
+            ].map((item, i) => (
+              <div key={i} style={{ textAlign: 'center' }}>
+                <div
+                  style={{
+                    width: 56,
+                    height: 56,
+                    borderRadius: '50%',
+                    border: '1px solid var(--tobacco)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem', fontWeight: 600, color: 'var(--mahogany)' }}>{item.step}</span>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-gray-600 text-sm">{item.desc}</p>
+                <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', fontWeight: 600, color: 'var(--mahogany)', marginBottom: 4 }}>{item.title}</h4>
+                <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'DM Sans, sans-serif', fontWeight: 300, lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>

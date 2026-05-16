@@ -1,3 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --vanilla: #F1EADA;
+  --sand: #CEC1A8;
+  --tobacco: #B59E7D;
+  --mountain: #AAA396;
+  --mahogany: #584738;
+  --mahogany-light: #7a6352;
+  --mahogany-dark: #3d2f24;
+  --white-warm: #FAF7F2;
+  --text-primary: #2e1f15;
+  --text-secondary: #584738;
+  --text-muted: #8a7b6e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--vanilla);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Display headings use Cormorant */
+h1, h2, h3, .display {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Grain texture overlay on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--vanilla);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sand);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tobacco);
+}
+
+/* Selection */
+::selection {
+  background: var(--tobacco);
+  color: var(--white-warm);
+}
+
+/* Utility classes */
+.bg-vanilla { background-color: var(--vanilla); }
+.bg-sand { background-color: var(--sand); }
+.bg-mahogany { background-color: var(--mahogany); }
+.text-mahogany { color: var(--mahogany); }
+.text-tobacco { color: var(--tobacco); }
+.text-mountain { color: var(--mountain); }
+.border-sand { border-color: var(--sand); }
+.border-tobacco { border-color: var(--tobacco); }
+
+/* Smooth fade-in for sections */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+/* Divider line */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--tobacco);
+  margin: 0 auto;
+}
