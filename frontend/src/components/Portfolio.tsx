@@ -207,7 +207,7 @@ const Portfolio: React.FC = () => {
                 backgroundColor: 'transparent',
                 color: 'var(--mahogany)',
                 border: '1px solid var(--tobacco)',
-                borderRadius: 2,
+                borderRadius: 100,
                 fontSize: '0.78rem',
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',

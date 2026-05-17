@@ -54,7 +54,7 @@ const About: React.FC = () => {
                     style={{
                       padding: '12px 16px',
                       border: '1px solid var(--sand)',
-                      borderRadius: 2,
+                      borderRadius: 100,
                       fontSize: '0.82rem',
                       color: 'var(--mahogany)',
                       fontFamily: 'Playfair Display, sans-serif',
@@ -124,7 +124,7 @@ const About: React.FC = () => {
                     backgroundColor: 'var(--vanilla)',
                     border: '1px solid var(--sand)',
                     padding: '1.2rem',
-                    borderRadius: 2,
+                    borderRadius: 40,
                     transition: 'border-color 0.2s ease',
                   }}
                   onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--tobacco)')}
