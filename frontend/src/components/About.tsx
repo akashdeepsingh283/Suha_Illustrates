@@ -24,24 +24,21 @@ const About: React.FC = () => {
               </span>
             </div>
 
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 400, color: 'var(--mahogany)', lineHeight: 1.1 }}>
-              About <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Snoopyydoodles</em>
-            </h2>
+            <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.5rem, 5vw, 3rem)', fontWeight: 200, color: 'var(--mahogany)', lineHeight: 1.1 }}>
+              About <em style={{ fontFamily: "'Beth Ellen', cursive", fontStyle: 'italic', fontWeight: 300 }}>Suha Scribbles </em>
+            </h3>
 
             <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.9, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }} className="space-y-4">
               <p>
-                Hi! I'm <strong style={{ color: 'var(--mahogany)', fontWeight: 500 }}>Arjun Bhatia</strong>, a passionate freelance artist based in Agra, India. 
-                My journey into digital art began over 2 years ago when I discovered the magic of bringing 
-                imagination to life through pixels and brushstrokes.
+               Hi, I’m Suhani Killa. My journey with art began in childhood, fueled by a lifelong passion for transforming the world into something playful and full of character. Today, I specialize in bringing a whimsical, cartoonish vision to human portraits, custom doodles, and digital artwork.
+
               </p>
               <p>
-                Specializing in digital illustrations, character design, and custom portraits, I've worked 
-                with clients from across cities — creating everything from book cover art to personal 
-                commissions that capture life's most precious moments.
+               Over the past two years, I’ve collaborated with clients across cities to bring unique art onto everyday pieces—from custom frames and notebook covers to personalized wallet cards. Most notably, I had the incredible opportunity to design a full corporate business card ecosystem, marking my biggest and most rewarding project yet.
+
               </p>
               <p>
-                My artistic philosophy: every piece should tell a story and evoke emotion. Whether it's a 
-                whimsical character or a heartfelt portrait, I pour my heart into every creation.
+               My Artistic Philosophy: I deeply believe that art is fundamentally anchored to emotion. Every piece I create is a vessel for storing memories, translating a heartfelt moment or a whimsical concept into a fun, relevant, and lasting visual story. Whether it’s a vibrant character or a meaningful portrait, I pour my heart into every line.
               </p>
             </div>
 
