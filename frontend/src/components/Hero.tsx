@@ -8,9 +8,8 @@ const Hero: React.FC = () => {
       id="home"
       style={{
         backgroundColor: "var(--vanilla)",
-        minHeight: "100vh",
-        margin: "0",
-        padding: "0",
+        paddingTop: "clamp(2rem, 5vw, 3rem)",
+        paddingBottom: "clamp(2rem, 5vw, 3rem)",
       }}
       className="flex items-center justify-center relative overflow-hidden"
     >
@@ -42,7 +41,7 @@ const Hero: React.FC = () => {
         }}
       />
 
-      <div className="max-w-5xl w-full px-5 sm:px-6 lg:px-12 relative z-10">
+      <div className="max-w-5xl w-full px-5 sm:px-6 lg:px-12 relative z-10 py-12 sm:py-16">
         <div className="flex justify-center items-center text-center">
           <div className="space-y-8 sm:space-y-10 lg:space-y-12 max-w-5xl flex flex-col items-center">
 

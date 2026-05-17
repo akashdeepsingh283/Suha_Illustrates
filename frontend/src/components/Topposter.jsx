@@ -5,11 +5,9 @@ const Topposter = () => {
   return (
     <div
       style={{
-        marginTop: '56px', // matches mobile header height (h-14)
-        marginBottom: '0',
+        marginTop: 'clamp(56px, 8vw, 64px)', // push below fixed header only
         width: '100%',
-        // Responsive height: shorter on mobile, full screen on desktop
-        height: 'clamp(240px, 54.5vw, 100vh)',
+        height: 'clamp(200px, 60vw, 93vh)',
         overflow: 'hidden',
         position: 'relative',
       }}
