@@ -26,6 +26,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* Prevent iOS font scaling */
 }
 
 body {
@@ -34,6 +35,9 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   font-weight: 300;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Display headings use Cormorant */
@@ -41,25 +45,22 @@ h1, h2, h3, .display {
   font-family: 'Cormorant Garamond', serif;
 }
 
+/* Prevent images from overflowing */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Custom font utility classes */
-.font-clicker {
-  font-family: 'Clicker Script', cursive;
-}
-.font-playfair {
-  font-family: 'Playfair Display', serif;
-}
+.font-clicker  { font-family: 'Clicker Script', cursive; }
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-beth     { font-family: 'Beth Ellen', cursive; }
+.font-aoboshi  { font-family: 'Aoboshi One', serif; }
+.font-macondo  { font-family: 'Macondo Swash Caps', cursive; }
 
-.font-beth {
-  font-family: 'Beth Ellen', cursive;
-}
-
-.font-aoboshi {
-  font-family: 'Aoboshi One', serif;
-}
-
-.font-macondo {
-  font-family: 'Macondo Swash Caps', cursive;
-}
+/* Hide scrollbar on horizontal scroll containers (filter tabs) */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Grain texture overlay on body */
 body::before {
@@ -73,59 +74,71 @@ body::before {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--vanilla);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--sand);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--tobacco);
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--vanilla); }
+::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--tobacco); }
 
 /* Selection */
-::selection {
-  background: var(--tobacco);
-  color: var(--white-warm);
-}
+::selection { background: var(--tobacco); color: var(--white-warm); }
 
 /* Utility classes */
-.bg-vanilla { background-color: var(--vanilla); }
-.bg-sand { background-color: var(--sand); }
-.bg-mahogany { background-color: var(--mahogany); }
+.bg-vanilla   { background-color: var(--vanilla); }
+.bg-sand      { background-color: var(--sand); }
+.bg-mahogany  { background-color: var(--mahogany); }
 .text-mahogany { color: var(--mahogany); }
-.text-tobacco { color: var(--tobacco); }
+.text-tobacco  { color: var(--tobacco); }
 .text-mountain { color: var(--mountain); }
-.border-sand { border-color: var(--sand); }
+.border-sand   { border-color: var(--sand); }
 .border-tobacco { border-color: var(--tobacco); }
 
 /* Smooth fade-in for sections */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-.fade-up {
-  animation: fadeUp 0.7s ease both;
-}
+.fade-up { animation: fadeUp 0.7s ease both; }
 
 /* Divider line */
-.divider {
-  width: 60px;
-  height: 1px;
-  background: var(--tobacco);
-  margin: 0 auto;
+.divider { width: 60px; height: 1px; background: var(--tobacco); margin: 0 auto; }
+
+/* ===== MOBILE-SPECIFIC FIXES ===== */
+
+/* Tap highlight fix for mobile */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Better touch targets on mobile */
+@media (max-width: 640px) {
+  /* Header */
+  header { padding: 0; }
+
+  /* Ensure buttons are tappable */
+  button, a { min-height: 44px; }
+
+  /* Fix select dropdowns on iOS */
+  select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23584738' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px !important;
+  }
+
+  /* Section padding */
+  section { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* Toast notifications */
+  .Toastify__toast-container { width: calc(100vw - 32px) !important; left: 16px !important; right: 16px !important; }
+}
+
+/* Prevent select from appearing on iOS */
+input, textarea, select {
+  font-size: 16px !important; /* Prevents iOS zoom on focus */
+}
+
+@media (min-width: 640px) {
+  input, textarea, select {
+    font-size: inherit !important;
+  }
 }

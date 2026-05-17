@@ -13,27 +13,19 @@ const Login = ({ setIsLoggedIn }) => {
     e.preventDefault();
 
     axios.post(`${API}/login`, { email, password })
-.then((result) => {
-  console.log(result.data);
+      .then((result) => {
+        console.log(result.data);
 
-  if (result.data.message === 'Login successful') {
-    // ✅ Save token and user in localStorage
-    localStorage.setItem('token', result.data.token);
-    localStorage.setItem('user', JSON.stringify(result.data.user));
-
-    // ✅ Set Axios default header
-    axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.token}`;
-
-    // ✅ Tell app user is logged in
-    setIsLoggedIn(true);
-
-    // ✅ Redirect
-    navigate('/');
-  } else {
-    alert(result.data.message || 'Login failed');
-  }
-})
-
+        if (result.data.message === 'Login successful') {
+          localStorage.setItem('token', result.data.token);
+          localStorage.setItem('user', JSON.stringify(result.data.user));
+          axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.token}`;
+          setIsLoggedIn(true);
+          navigate('/');
+        } else {
+          alert(result.data.message || 'Login failed');
+        }
+      })
       .catch((err) => {
         console.error('Login error:', err);
         alert('Login failed. Please check your credentials.');
@@ -41,8 +33,8 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <section 
-      className="min-h-screen flex items-center justify-center"
+    <section
+      className="min-h-screen flex items-center justify-center px-4 py-12"
       style={{
         backgroundImage: `url(${loginbg})`,
         backgroundSize: 'cover',
@@ -51,82 +43,73 @@ const Login = ({ setIsLoggedIn }) => {
       }}
     >
       <div className="w-full max-w-md bg-white bg-opacity-95 rounded-lg shadow-lg p-8">
-        {/* Form Content */}
-        <div className="w-full p-0">
-          <div className="mb-6 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-1">
-              <div className="flex items-center space-x-3 justify-center">
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    background: 'var(--mahogany)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <span style={{ color: 'var(--vanilla)', fontSize: 13, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 600 }}>S</span>
-                </div>
-                <span
-                  style={{
-                    fontFamily: "'Beth Ellen', cursive",
-                    fontSize: '1.2rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.04em',
-                    color: 'var(--mahogany)',
-                  }}
-                >
-                  Suha Scribbles
-                </span>
-              </div>
-            </h2>
-            <p className="mt-5 text-lg text-gray-500">Sign into your account</p>
+        <div className="mb-6 text-center">
+          <div className="flex items-center space-x-3 justify-center mb-3">
+            <div
+              style={{
+                width: 32,
+                height: 32,
+                background: 'var(--mahogany)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <span style={{ color: 'var(--vanilla)', fontSize: 13, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 600 }}>S</span>
+            </div>
+            <span
+              style={{
+                fontFamily: "'Beth Ellen', cursive",
+                fontSize: '1.2rem',
+                fontWeight: 600,
+                letterSpacing: '0.04em',
+                color: 'var(--mahogany)',
+              }}
+            >
+              Suha Scribbles
+            </span>
+          </div>
+          <p className="text-sm text-gray-500">Sign into your account</p>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+            <input
+              type="email"
+              id="email"
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email address
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input
+              type="password"
+              id="password"
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-            <div className="mb-6">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
+          <button
+            type="submit"
+            className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900 transition"
+          >
+            Login
+          </button>
 
-            <button
-              type="submit"
-              className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900 transition"
-            >
-              Login
-            </button>
-
-            <p className="mt-6 text-sm text-center text-gray-700">
-              Don’t have an account?{' '}
-              <Link to="/signup" className="text-amber-600 font-medium hover:underline">
-                Register here
-              </Link>
-            </p>
-          </form>
-        </div>
+          <p className="mt-6 text-sm text-center text-gray-700">
+            Don't have an account?{' '}
+            <Link to="/signup" className="text-amber-600 font-medium hover:underline">
+              Register here
+            </Link>
+          </p>
+        </form>
       </div>
     </section>
   );

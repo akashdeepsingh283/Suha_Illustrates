@@ -20,45 +20,48 @@ const Footer: React.FC = () => {
 
   return (
     <footer style={{ backgroundColor: 'var(--mahogany)', color: 'var(--vanilla)' }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
+          {/* Brand — full width on mobile */}
+          <div className="sm:col-span-2">
+            <div className="flex items-center space-x-3 mb-4">
               <div
                 style={{
-                  width: 36,
-                  height: 36,
+                  width: 34,
+                  height: 34,
                   borderRadius: '50%',
                   border: '1px solid var(--tobacco)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  flexShrink: 0,
                 }}
               >
-                <span style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 15, color: 'var(--vanilla)' }}>S</span>
+                <span style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 14, color: 'var(--vanilla)' }}>S</span>
               </div>
               <div>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.4rem', fontWeight: 600, letterSpacing: '0.02em', color: 'var(--vanilla)' }}>
+                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', fontWeight: 600, letterSpacing: '0.02em', color: 'var(--vanilla)' }}>
                   Snoopyydoodles
                 </h3>
-                <p style={{ fontSize: '0.72rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--tobacco)', fontFamily: 'DM Sans, sans-serif' }}>
+                <p style={{ fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--tobacco)', fontFamily: 'DM Sans, sans-serif' }}>
                   Freelance Artist
                 </p>
               </div>
             </div>
 
-            <p style={{ color: 'var(--sand)', fontSize: '0.9rem', lineHeight: 1.8, maxWidth: 360, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
+            <p style={{ color: 'var(--sand)', fontSize: 'clamp(0.82rem, 2.5vw, 0.9rem)', lineHeight: 1.8, maxWidth: 360, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
               Creating beautiful, meaningful art that captures emotions and tells stories.
               Based in Agra, India — working with clients worldwide.
             </p>
 
-            <div className="flex space-x-3 mt-6">
+            <div className="flex flex-wrap gap-2 mt-5">
               {socialLinks.map((s, i) => (
                 <a
                   key={i}
                   href={s.href}
                   aria-label={s.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
                     width: 36,
                     height: 36,
@@ -81,7 +84,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1.2rem' }}>
+            <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.05rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1rem' }}>
               Navigate
             </h4>
             <ul className="space-y-2">
@@ -102,7 +105,7 @@ const Footer: React.FC = () => {
 
           {/* Services */}
           <div>
-            <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1.2rem' }}>
+            <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.05rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1rem' }}>
               Services
             </h4>
             <ul className="space-y-2" style={{ color: 'var(--sand)', fontSize: '0.85rem', fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
@@ -115,16 +118,19 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom */}
-        <div style={{ borderTop: '1px solid rgba(206,193,168,0.15)', marginTop: '3rem', paddingTop: '1.5rem' }} className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <span style={{ fontSize: '0.78rem', color: 'var(--mountain)', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0.02em' }}>
+        <div
+          style={{ borderTop: '1px solid rgba(206,193,168,0.15)', marginTop: '2.5rem', paddingTop: '1.5rem' }}
+          className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left"
+        >
+          <span style={{ fontSize: '0.75rem', color: 'var(--mountain)', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0.02em' }}>
             © 2025 Snoopyydoodles. All rights reserved.
           </span>
-          <div className="flex space-x-6">
+          <div className="flex space-x-5">
             {['Privacy Policy', 'Terms of Service'].map((t) => (
               <a
                 key={t}
                 href="#"
-                style={{ fontSize: '0.78rem', color: 'var(--mountain)', fontFamily: 'DM Sans, sans-serif', transition: 'color 0.2s' }}
+                style={{ fontSize: '0.75rem', color: 'var(--mountain)', fontFamily: 'DM Sans, sans-serif', transition: 'color 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--sand)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--mountain)')}
               >

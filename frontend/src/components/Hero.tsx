@@ -9,18 +9,18 @@ const Hero: React.FC = () => {
       style={{
         backgroundColor: "var(--vanilla)",
         minHeight: "100vh",
-        paddingTop: "40px",
+        paddingTop: "56px", // matches mobile header height
       }}
       className="flex items-center justify-center relative overflow-hidden"
     >
-      {/* Background decorative circle */}
+      {/* Background decorative circles */}
       <div
         style={{
           position: "absolute",
-          top: "10%",
-          right: "-8%",
-          width: 520,
-          height: 520,
+          top: "8%",
+          right: "-12%",
+          width: "clamp(200px, 45vw, 520px)",
+          height: "clamp(200px, 45vw, 520px)",
           borderRadius: "50%",
           background: "var(--sand)",
           opacity: 0.35,
@@ -30,10 +30,10 @@ const Hero: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          bottom: "5%",
-          left: "-5%",
-          width: 320,
-          height: 320,
+          bottom: "3%",
+          left: "-8%",
+          width: "clamp(120px, 28vw, 320px)",
+          height: "clamp(120px, 28vw, 320px)",
           borderRadius: "50%",
           background: "var(--tobacco)",
           opacity: 0.12,
@@ -41,27 +41,18 @@ const Hero: React.FC = () => {
         }}
       />
 
-      <div className="max-w-5xl w-full px-6 lg:px-12 relative z-10">
+      <div className="max-w-5xl w-full px-5 sm:px-6 lg:px-12 relative z-10 py-12 sm:py-16">
         <div className="flex justify-center items-center text-center">
-          {/* Center Content */}
-          <div className="space-y-12 max-w-5xl flex flex-col items-center">
+          <div className="space-y-8 sm:space-y-10 lg:space-y-12 max-w-5xl flex flex-col items-center">
+
             {/* Label */}
             <div className="flex items-center space-x-3">
-              {/* Left line */}
-              <div
-                style={{
-                  width: 40,
-                  height: 1,
-                  background: "var(--tobacco)",
-                }}
-              />
-
-              {/* Text */}
+              <div style={{ width: 28, height: 1, background: "var(--tobacco)", flexShrink: 0 }} />
               <span
                 style={{
                   color: "var(--tobacco)",
-                  fontSize: "0.95rem",
-                  letterSpacing: "0.18em",
+                  fontSize: "clamp(0.65rem, 2.2vw, 0.95rem)",
+                  letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   fontFamily: "'Playfair Display', serif",
                   fontWeight: 700,
@@ -69,21 +60,14 @@ const Hero: React.FC = () => {
               >
                 Designer & Illustrator · Gujarat, India
               </span>
-
-              {/* Right line */}
-              <div
-                style={{
-                  width: 40,
-                  height: 1,
-                  background: "var(--tobacco)",
-                }}
-              />
+              <div style={{ width: 28, height: 1, background: "var(--tobacco)", flexShrink: 0 }} />
             </div>
+
             {/* Heading */}
             <h1
               style={{
                 fontFamily: "Cormorant Garamond, serif",
-                fontSize: "clamp(4.5rem, 9vw, 7rem)",
+                fontSize: "clamp(3rem, 10vw, 7rem)",
                 fontWeight: 300,
                 lineHeight: 1.1,
                 color: "var(--mahogany)",
@@ -101,12 +85,13 @@ const Hero: React.FC = () => {
             <p
               style={{
                 color: "var(--text-muted)",
-                fontSize: "1.25rem",
+                fontSize: "clamp(0.9rem, 3vw, 1.15rem)",
                 lineHeight: 1.75,
-                maxWidth: 850,
+                maxWidth: 680,
                 textAlign: "center",
                 fontFamily: "DM Sans, sans-serif",
                 fontWeight: 300,
+                padding: "0 4px",
               }}
             >
               An online space dedicated to bold visual storytelling, minimalist
@@ -115,16 +100,16 @@ const Hero: React.FC = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <HashLink to="/#portfolio">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto">
+              <HashLink to="/#portfolio" className="w-full sm:w-auto">
                 <button
                   style={{
                     backgroundColor: "var(--mahogany)",
                     color: "var(--vanilla)",
                     border: "none",
-                    padding: "18px 42px",
+                    padding: "15px 32px",
                     borderRadius: 100,
-                    fontSize: "0.95rem",
+                    fontSize: "clamp(0.78rem, 2.5vw, 0.95rem)",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     fontFamily: "Playfair Display, serif",
@@ -132,7 +117,9 @@ const Hero: React.FC = () => {
                     cursor: "pointer",
                     display: "flex",
                     alignItems: "center",
+                    justifyContent: "center",
                     gap: 10,
+                    width: "100%",
                   }}
                 >
                   Explore my Work
@@ -140,20 +127,21 @@ const Hero: React.FC = () => {
                 </button>
               </HashLink>
 
-              <HashLink to="/#contact">
+              <HashLink to="/#contact" className="w-full sm:w-auto">
                 <button
                   style={{
                     backgroundColor: "transparent",
                     color: "var(--mahogany)",
                     border: "1px solid var(--tobacco)",
-                    padding: "18px 42px",
+                    padding: "15px 32px",
                     borderRadius: 100,
-                    fontSize: "0.95rem",
+                    fontSize: "clamp(0.78rem, 2.5vw, 0.95rem)",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     fontFamily: "'Playfair Display', serif",
                     fontWeight: 400,
                     cursor: "pointer",
+                    width: "100%",
                   }}
                 >
                   Let's Collaborate
@@ -163,11 +151,8 @@ const Hero: React.FC = () => {
 
             {/* Stats */}
             <div
-              style={{
-                borderTop: "1px solid var(--sand)",
-                paddingTop: "2rem",
-              }}
-              className="grid grid-cols-3 gap-10 w-full max-w-md"
+              style={{ borderTop: "1px solid var(--sand)", paddingTop: "1.5rem" }}
+              className="grid grid-cols-3 gap-6 sm:gap-10 w-full max-w-xs sm:max-w-md"
             >
               {[
                 { num: "150+", label: "Projects" },
@@ -178,7 +163,7 @@ const Hero: React.FC = () => {
                   <div
                     style={{
                       fontFamily: "Cormorant Garamond, serif",
-                      fontSize: "3rem",
+                      fontSize: "clamp(2rem, 6vw, 3rem)",
                       fontWeight: 600,
                       color: "var(--mahogany)",
                       lineHeight: 1,
@@ -186,10 +171,9 @@ const Hero: React.FC = () => {
                   >
                     {s.num}
                   </div>
-
                   <div
                     style={{
-                      fontSize: "0.9rem",
+                      fontSize: "clamp(0.65rem, 2vw, 0.9rem)",
                       letterSpacing: "0.12em",
                       textTransform: "uppercase",
                       color: "var(--text-muted)",
