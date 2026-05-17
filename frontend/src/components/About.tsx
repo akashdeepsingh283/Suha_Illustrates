@@ -28,9 +28,9 @@ const About: React.FC = () => {
               About <em style={{ fontFamily: "'Beth Ellen', cursive", fontStyle: 'italic', fontWeight: 300 }}>Suha Scribbles </em>
             </h3>
 
-            <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.9, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }} className="space-y-4">
+            <div style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.9, fontFamily: 'Playfair Display, serif', fontWeight: 300 }} className="space-y-4">
               <p>
-               Hi, I’m Suhani Killa. My journey with art began in childhood, fueled by a lifelong passion for transforming the world into something playful and full of character. Today, I specialize in bringing a whimsical, cartoonish vision to human portraits, custom doodles, and digital artwork.
+               Hi, I’m <span style={{ fontWeight: 700 }}>Suhani Killa</span>. My journey with art began in childhood, fueled by a lifelong passion for transforming the world into something playful and full of character. Today, I specialize in bringing a whimsical, cartoonish vision to human portraits, custom doodles, and digital artwork.
 
               </p>
               <p>
