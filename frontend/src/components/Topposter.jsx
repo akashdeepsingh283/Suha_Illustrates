@@ -8,7 +8,7 @@ const Topposter = () => {
         marginTop: '56px', // matches mobile header height (h-14)
         width: '100%',
         // Responsive height: shorter on mobile, full screen on desktop
-        height: 'clamp(240px, 50vw, 100vh)',
+        height: 'clamp(240px, 54.5vw, 100vh)',
         overflow: 'hidden',
         position: 'relative',
       }}
