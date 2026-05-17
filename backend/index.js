@@ -128,10 +128,10 @@ cloudinary.config({
 // and gets treated as "digital".
 // ─────────────────────────────────────────────────────────────
 const CATEGORY_FOLDERS = {
-  digital:       "portfolio/digital",
-  portraits:     "portfolio/portraits",
-  illustrations: "portfolio/illustrations",
-  commissions:   "portfolio/commissions",
+  digital: "portfolio/digital",
+  portraits: "portfolio/portraits",
+  illustrations: "portfolio/pet illustrations",
+  commissions: "portfolio/custom prints",
 };
 
 // Helper: derive category from Cloudinary public_id path

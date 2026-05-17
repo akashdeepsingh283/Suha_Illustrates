@@ -3,36 +3,6 @@ import { ExternalLink, Heart, Eye, X, ChevronLeft, ChevronRight, Loader2 } from 
 
 const backendURL = import.meta.env.VITE_API_BASE_URL;
 
-import img1 from '../img/1.jpg';
-import img2 from '../img/2.jpg';
-import img3 from '../img/4.jpg';
-import img4 from '../img/5.jpg';
-import img5 from '../img/6.JPG';
-import img6 from '../img/31.jpg';
-import img7 from '../img/IMG_1851.JPG';
-import img8 from '../img/IMG_1948.JPG';
-import img9 from '../img/IMG_1959.JPG';
-import img10 from '../img/IMG_1969.JPG';
-import img11 from '../img/IMG_1981.JPG';
-import img12 from '../img/IMG_2004.JPG';
-import img13 from '../img/IMG_2011.JPG';
-import img14 from '../img/IMG_2015.JPG';
-import img15 from '../img/IMG_2016.JPG';
-import img16 from '../img/IMG_2020.JPG';
-import img17 from '../img/IMG_2022.JPG';
-import img18 from '../img/IMG_2030.JPG';
-import img19 from '../img/IMG_2043.JPG';
-import img20 from '../img/IMG_2047.JPG';
-import img21 from '../img/IMG_2049.JPG';
-import img22 from '../img/IMG_2050.JPG';
-import img23 from '../img/IMG_2051.JPG';
-import img25 from '../img/IMG_2178.JPG';
-import img26 from '../img/IMG_2291.JPG';
-import img27 from '../img/IMG_2315.JPG';
-import img28 from '../img/IMG_2335.JPG';
-import img29 from '../img/IMG_2339.JPG';
-import img30 from '../img/IMG_2395.JPG';
-
 interface PortfolioItem {
   id: number | string;
   category: string;
@@ -41,38 +11,6 @@ interface PortfolioItem {
   likes: number;
   views: number;
 }
-
-const staticItems: PortfolioItem[] = [
-  { id: 1,  category: 'portraits',     image: img1,  likes: 87, views: 66 },
-  { id: 2,  category: 'commissions',   image: img2,  likes: 42, views: 73 },
-  { id: 3,  category: 'digital',       image: img3,  likes: 56, views: 93 },
-  { id: 4,  category: 'illustrations', image: img4,  likes: 70, views: 75 },
-  { id: 5,  category: 'commissions',   image: img5,  likes: 39, views: 99 },
-  { id: 6,  category: 'digital',       image: img6,  likes: 92, views: 87 },
-  { id: 7,  category: 'portraits',     image: img7,  likes: 64, views: 98 },
-  { id: 8,  category: 'illustrations', image: img8,  likes: 51, views: 59 },
-  { id: 9,  category: 'commissions',   image: img9,  likes: 76, views: 77 },
-  { id: 10, category: 'digital',       image: img10, likes: 84, views: 81 },
-  { id: 11, category: 'digital',       image: img11, likes: 33, views: 94 },
-  { id: 12, category: 'illustrations', image: img12, likes: 59, views: 79 },
-  { id: 13, category: 'commissions',   image: img13, likes: 47, views: 68 },
-  { id: 14, category: 'portraits',     image: img14, likes: 98, views: 65 },
-  { id: 15, category: 'digital',       image: img15, likes: 44, views: 77 },
-  { id: 16, category: 'illustrations', image: img16, likes: 73, views: 88 },
-  { id: 17, category: 'commissions',   image: img17, likes: 29, views: 69 },
-  { id: 18, category: 'portraits',     image: img18, likes: 62, views: 84 },
-  { id: 19, category: 'digital',       image: img19, likes: 79, views: 91 },
-  { id: 20, category: 'illustrations', image: img20, likes: 88, views: 52 },
-  { id: 21, category: 'commissions',   image: img21, likes: 36, views: 95 },
-  { id: 22, category: 'portraits',     image: img22, likes: 91, views: 71 },
-  { id: 23, category: 'digital',       image: img23, likes: 74, views: 86 },
-  { id: 25, category: 'commissions',   image: img25, likes: 97, views: 99 },
-  { id: 26, category: 'portraits',     image: img26, likes: 53, views: 80 },
-  { id: 27, category: 'digital',       image: img27, likes: 45, views: 72 },
-  { id: 28, category: 'illustrations', image: img28, likes: 66, views: 60 },
-  { id: 29, category: 'commissions',   image: img29, likes: 89, views: 93 },
-  { id: 30, category: 'portraits',     image: img30, likes: 61, views: 58 },
-];
 
 const filters = [
   { id: 'all',           label: 'All Work' },
@@ -127,12 +65,8 @@ const Portfolio: React.FC = () => {
     fetchCloud(activeFilter);
   }, [activeFilter, fetchCloud]);
 
-  const filteredStatic =
-    activeFilter === 'all'
-      ? staticItems
-      : staticItems.filter((i) => i.category === activeFilter);
 
-  const allItems       = [...filteredStatic, ...cloudItems];
+  const allItems = cloudItems;
   const itemsToDisplay = showAll ? allItems : allItems.slice(0, 6);
   const modalList      = allItems;
 
