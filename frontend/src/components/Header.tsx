@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 400, fontFamily: "'Playfair Display', serif" }}
+                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Playfair Display', serif" }}
                   className="hover:opacity-60 transition-opacity"
                 >
                   {item.label}
@@ -99,7 +99,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                   onClick={(e) => {
                     if (item.onClick) { e.preventDefault(); item.onClick(); }
                   }}
-                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 400, fontFamily: "'Playfair Display', serif" }}
+                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 700, fontFamily: "'Playfair Display', serif" }}
                   className="hover:opacity-60 transition-opacity"
                 >
                   {item.label}
