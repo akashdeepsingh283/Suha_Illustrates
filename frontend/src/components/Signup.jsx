@@ -52,8 +52,35 @@ const Signup = () => {
         {/* Right Form */}
         <div className="w-full md:w-1/2 p-8">
           <div className="mb-6 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-1">Signup</h2>
-            <p className="text-sm text-gray-500">Create your account</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-1">
+              <div className="flex items-center space-x-3 justify-center">
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    background: 'var(--mahogany)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <span style={{ color: 'var(--vanilla)', fontSize: 13, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 600 }}>S</span>
+                </div>
+                <span
+                  style={{
+                    fontFamily: "'Beth Ellen', cursive",
+                    fontSize: '1.2rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                    color: 'var(--mahogany)',
+                  }}
+                >
+                  Suha Scribbles
+                </span>
+              </div>
+            </h2>
+            <p className="text-sm mt-5 text-gray-500">Create your account</p>
           </div>
 
           <form onSubmit={handleSubmit}>

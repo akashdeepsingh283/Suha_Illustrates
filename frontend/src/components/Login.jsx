@@ -57,14 +57,34 @@ const Login = ({ setIsLoggedIn }) => {
         <div className="w-full md:w-1/2 p-8">
           <div className="mb-6 text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-1">
-              <div className="flex items-center space-x-2 justify-center">
-                <div className="bg-gradient-to-br from-amber-400 to-orange-500 p-2 rounded-lg">
-                  <Palette className="h-6 w-6 text-white" />
+              <div className="flex items-center space-x-3 justify-center">
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    background: 'var(--mahogany)',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <span style={{ color: 'var(--vanilla)', fontSize: 13, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 600 }}>S</span>
                 </div>
-                <span className="text-xl font-bold text-gray-900">Snoopyydoodles</span>
+                <span
+                  style={{
+                    fontFamily: "'Beth Ellen', cursive",
+                    fontSize: '1.2rem',
+                    fontWeight: 600,
+                    letterSpacing: '0.04em',
+                    color: 'var(--mahogany)',
+                  }}
+                >
+                  Suha Scribbles
+                </span>
               </div>
             </h2>
-            <p className="text-lg text-gray-500">Sign into your account</p>
+            <p className="mt-5 text-lg text-gray-500">Sign into your account</p>
           </div>
 
           <form onSubmit={handleSubmit}>
