@@ -8,8 +8,8 @@ const Hero: React.FC = () => {
       id="home"
       style={{
         backgroundColor: "var(--vanilla)",
-        paddingTop: "clamp(2rem, 5vw, 3rem)",
-        paddingBottom: "clamp(2rem, 5vw, 3rem)",
+        minHeight: "100vh",
+        paddingTop: "56px", // matches mobile header height
       }}
       className="flex items-center justify-center relative overflow-hidden"
     >
