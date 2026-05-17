@@ -79,7 +79,7 @@ const Portfolio: React.FC = () => {
   const modalList      = allItems;
 
   return (
-    <section id="portfolio" style={{ backgroundColor: 'var(--vanilla)', padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+    <section id="portfolio" style={{ backgroundColor: 'var(--vanilla)', padding: 'clamp(4rem, 10vw, 7rem) 0' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
         {/* Header */}
