@@ -1,5 +1,5 @@
 import React from 'react';
-import img1 from '../img/IMG_2395.JPG';
+import img1 from '../img/bg.png';
 
 const Topposter = () => {
   return (
