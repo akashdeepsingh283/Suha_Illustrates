@@ -147,15 +147,8 @@ function categoryFromPublicId(publicId) {
 
 // Helper: map raw Cloudinary resource to our image object
 function mapImage(img) {
+  const category = categoryFromPublicId(img.public_id);
   const pathParts = img.public_id.split("/");
-  // If nested: portfolio/category/filename  → category is index 1
-  // If flat:   portfolio/filename           → no category subfolder
-  let category = "digital";
-  if (pathParts.length >= 3) {
-    // e.g. ["portfolio", "portraits", "my-art"]
-    const subfolder = pathParts[1];
-    if (CATEGORY_FOLDERS[subfolder]) category = subfolder;
-  }
 
   return {
     id: img.asset_id,
