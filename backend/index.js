@@ -165,7 +165,7 @@ function mapImage(img) {
 app.get("/cloudinary-images", async (req, res) => {
   try {
     const { resources } = await cloudinary.search
-      .expression("folder:portfolio/*") // matches all subfolders
+      .expression('folder:"portfolio/*"') // matches all subfolders
       .sort_by("created_at", "desc")
       .max_results(100)
       .execute();
@@ -190,7 +190,7 @@ app.get("/cloudinary-images/:category", async (req, res) => {
 
   try {
     const { resources } = await cloudinary.search
-      .expression(`folder:${folder}`)
+      .expression(`folder:"${folder}"`)
       .sort_by("created_at", "desc")
       .max_results(50)
       .execute();
