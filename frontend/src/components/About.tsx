@@ -44,10 +44,10 @@ const About: React.FC = () => {
 
             {/* Specialties */}
             <div>
-              <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.3rem', fontWeight: 600, color: 'var(--mahogany)', marginBottom: '1rem' }}>
+              <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.3rem', fontWeight: 600, color: 'var(--mahogany)', marginBottom: '1rem' }}>
                 Specialties
               </h3>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="font-playfair grid grid-cols-2 gap-3">
                 {['Digital Illustration', 'Portrait Art', 'Character Design', 'Merchandising & Print Design'].map((skill) => (
                   <div
                     key={skill}
@@ -57,7 +57,7 @@ const About: React.FC = () => {
                       borderRadius: 2,
                       fontSize: '0.82rem',
                       color: 'var(--mahogany)',
-                      fontFamily: 'DM Sans, sans-serif',
+                      fontFamily: 'Playfair Display, sans-serif',
                       fontWeight: 400,
                       letterSpacing: '0.02em',
                       backgroundColor: 'var(--vanilla)',
@@ -144,8 +144,8 @@ const About: React.FC = () => {
                   >
                     <a.icon size={14} color="var(--vanilla)" />
                   </div>
-                  <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem', fontWeight: 600, color: 'var(--mahogany)', marginBottom: 4 }}>{a.title}</h4>
-                  <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>{a.description}</p>
+                  <h4 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1rem', fontWeight: 600, color: 'var(--mahogany)', marginBottom: 4 }}>{a.title}</h4>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontFamily:  "DM Sans, sans-serif", fontWeight: 400 }}>{a.description}</p>
                 </div>
               ))}
             </div>
