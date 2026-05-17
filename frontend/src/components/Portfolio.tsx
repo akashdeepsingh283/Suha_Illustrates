@@ -96,16 +96,16 @@ const Portfolio: React.FC = () => {
         <div className="text-center mb-14">
           <div className="flex items-center justify-center space-x-3 mb-4">
             <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
-            <span style={{ color: 'var(--tobacco)', fontSize: '0.72rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif' }}>
-              Selected Works
+            <span style={{ color: 'var(--tobacco)', fontSize: '0.8rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif' }}>
+              MY WORK 
             </span>
             <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
           </div>
-          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.5rem, 5vw, 3.8rem)', fontWeight: 400, color: 'var(--mahogany)' }}>
-            My <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Portfolio</em>
+          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.5rem, 5vw, 5rem)', fontWeight: 400, color: 'var(--mahogany)' }}>
+            Visual <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Gallery</em>
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', maxWidth: 520, margin: '1rem auto 0', lineHeight: 1.75, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
-            A curated selection of recent work showcasing various styles developed through passionate artistic practice.
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.0 rem', maxWidth: 520, margin: '1rem auto 0', lineHeight: 1.75, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
+           From vibrant cartoon portraits to custom product merchandise—explore a diverse showcase of digital art created to bring character and emotion to life.
           </p>
         </div>
 
