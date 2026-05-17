@@ -42,8 +42,8 @@ const Portfolio: React.FC = () => {
     { id: 'all', label: 'All Work' },
     { id: 'digital', label: 'Digital Art' },
     { id: 'portraits', label: 'Portraits' },
-    { id: 'illustrations', label: 'Illustrations' },
-    { id: 'commissions', label: 'Commissions' },
+    { id: 'illustrations', label: 'PET Illustrations' },
+    { id: 'commissions', label: 'CUSTOM PRINTS' },
   ];
 
   const portfolioItems = [
@@ -117,11 +117,11 @@ const Portfolio: React.FC = () => {
               onClick={() => { setActiveFilter(f.id); setShowAll(false); }}
               style={{
                 padding: '8px 20px',
-                borderRadius: 2,
+                borderRadius: 100,
                 fontSize: '0.72rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                fontFamily: 'DM Sans, sans-serif',
+                fontFamily: "'Playfair Display', serif",
                 fontWeight: 400,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
