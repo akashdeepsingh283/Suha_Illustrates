@@ -57,9 +57,9 @@ const Contact: React.FC<ContactProps> = ({ isLoggedIn }) => {
   };
 
   const contactInfo = [
-    { icon: Mail, title: 'Email', value: 'snoopyydoodles@gmail.com', link: 'mailto:snoopyydoodles@gmail.com' },
-    { icon: Phone, title: 'Phone', value: '+91 93687 76711', link: 'tel:+919368776711' },
-    { icon: MapPin, title: 'Location', value: 'Agra, India', link: 'https://maps.google.com/?q=Agra' },
+    { icon: Mail, title: 'Email', value: 'suhaniiiwork@gmail.com', link: 'mailto:suhaniiiwork@gmail.com' },
+    { icon: Phone, title: 'Phone', value: '+91 9879336299', link: 'tel:+919879336299' },
+    { icon: MapPin, title: 'Location', value: 'Gujarat, India', link: 'https://maps.google.com/?q=Gujarat, India' },
   ];
 
   return (
