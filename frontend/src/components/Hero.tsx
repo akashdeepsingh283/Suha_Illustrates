@@ -44,7 +44,7 @@ const Hero: React.FC = () => {
             {/* Label */}
             <div className="flex items-center space-x-3">
               <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
-              <span style={{ color: 'var(--tobacco)', fontSize: '0.75rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>
+              <span style={{ color: 'var(--tobacco)', fontSize: '0.75rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: "'Playfair Display', serif", fontWeight: 700 }}>
                 Designer & Illustrator· Gujarat, India
               </span>
             </div>
