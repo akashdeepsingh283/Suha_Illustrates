@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import signupbg from '../img/signupbg.jpeg';
 const API = import.meta.env.VITE_API_BASE_URL;
 
 const Signup = () => {
@@ -37,119 +38,115 @@ const Signup = () => {
   };
 
   return (
-    <section className="min-h-screen bg-[#FFDCDC] flex items-center justify-center">
-      <div className="max-w-4xl w-full bg-white rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-        
-        {/* Left Image */}
-        <div className="hidden md:block md:w-1/2">
-          <img
-            src="https://i.pinimg.com/736x/a1/a0/c8/a1a0c88b8c107fc819c1a79d5fd24650.jpg"
-            alt="signup visual"
-            className="h-[80vh] w-full object-cover"
-          />
+    <section 
+      className="min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: `url(${signupbg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="w-full max-w-md bg-white bg-opacity-95 rounded-lg shadow-lg p-8">
+        <div className="mb-6 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 mb-1">
+            <div className="flex items-center space-x-3 justify-center">
+              <div
+                style={{
+                  width: 32,
+                  height: 32,
+                  background: 'var(--mahogany)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <span style={{ color: 'var(--vanilla)', fontSize: 13, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 600 }}>S</span>
+              </div>
+              <span
+                style={{
+                  fontFamily: "'Beth Ellen', cursive",
+                  fontSize: '1.2rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.04em',
+                  color: 'var(--mahogany)',
+                }}
+              >
+                Suha Scribbles
+              </span>
+            </div>
+          </h2>
+          <p className="text-sm mt-5 text-gray-500">Create your account</p>
         </div>
 
-        {/* Right Form */}
-        <div className="w-full md:w-1/2 p-8">
-          <div className="mb-6 text-center">
-            <h2 className="text-3xl font-bold text-gray-800 mb-1">
-              <div className="flex items-center space-x-3 justify-center">
-                <div
-                  style={{
-                    width: 32,
-                    height: 32,
-                    background: 'var(--mahogany)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <span style={{ color: 'var(--vanilla)', fontSize: 13, fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontWeight: 600 }}>S</span>
-                </div>
-                <span
-                  style={{
-                    fontFamily: "'Beth Ellen', cursive",
-                    fontSize: '1.2rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.04em',
-                    color: 'var(--mahogany)',
-                  }}
-                >
-                  Suha Scribbles
-                </span>
-              </div>
-            </h2>
-            <p className="text-sm mt-5 text-gray-500">Create your account</p>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              required
+            />
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-              <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
-                required
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              required
+            />
+          </div>
 
-            <div className="mb-4">
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email address</label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
-                required
-              />
-            </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              required
+            />
+          </div>
 
-            <div className="mb-4">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
-                required
-              />
-            </div>
+          <div className="mb-6">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
+              required
+            />
+          </div>
 
-            <div className="mb-6">
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-amber-500"
-                required
-              />
-            </div>
+          <button
+            type="submit"
+            className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900 transition"
+          >
+            Register
+          </button>
 
-            <button
-              type="submit"
-              className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900 transition"
-            >
-              Register
-            </button>
-
-            <p className="mt-6 text-sm text-center text-gray-700">
-              Already have an account?{' '}
-              <Link to="/login" className="text-amber-600 font-medium hover:underline">
-                Login here
-              </Link>
-            </p>
-          </form>
-        </div>
+          <p className="mt-6 text-sm text-center text-gray-700">
+            Already have an account?{' '}
+            <Link to="/login" className="text-amber-600 font-medium hover:underline">
+              Login here
+            </Link>
+          </p>
+        </form>
       </div>
     </section>
   );
 };
+
 
 export default Signup;

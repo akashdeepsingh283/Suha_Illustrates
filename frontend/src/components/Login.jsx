@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Palette } from '@mui/icons-material';
 import axios from 'axios';
+import loginbg from '../img/loginbg.jpeg';
 const API = import.meta.env.VITE_API_BASE_URL;
 
 const Login = ({ setIsLoggedIn }) => {
@@ -41,20 +41,18 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <section className="min-h-screen bg-[#FFE8CD] flex items-center justify-center">
-      <div className="max-w-4xl w-full bg-white rounded-lg overflow-hidden shadow-lg flex flex-col md:flex-row">
-        
-        {/* Left Image */}
-        <div className="hidden md:block md:w-1/2">
-          <img
-            src="https://i.pinimg.com/736x/20/72/bf/2072bf31916fe07aa69fed32a9319372.jpg"
-            alt="login visual"
-            className="h-[80vh] w-full object-cover"
-          />
-        </div>
-
-        {/* Right Form */}
-        <div className="w-full md:w-1/2 p-8">
+    <section 
+      className="min-h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: `url(${loginbg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      <div className="w-full max-w-md bg-white bg-opacity-95 rounded-lg shadow-lg p-8">
+        {/* Form Content */}
+        <div className="w-full p-0">
           <div className="mb-6 text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-1">
               <div className="flex items-center space-x-3 justify-center">
