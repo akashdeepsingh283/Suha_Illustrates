@@ -1,13 +1,13 @@
 import React from 'react';
 import { Award, Users, Clock, Heart } from 'lucide-react';
-import arjun from '../img/arjun.JPG';
+import suhani from '../img/s3.png';
 
 const About: React.FC = () => {
   const achievements = [
-    { icon: Award, title: 'Featured Artist', description: 'Selected for Digital Arts Magazine 2024' },
-    { icon: Users, title: 'Client Satisfaction', description: '98% positive feedback rate' },
-    { icon: Clock, title: 'Fast Delivery', description: 'Average 48-hour turnaround' },
-    { icon: Heart, title: 'Passion Driven', description: 'Every project crafted with love' },
+    { icon: Award, title: 'Print-Ready Formats', description: 'High-resolution, production-ready files perfect for your custom frames, wallet cards, or notebook covers.' },
+    { icon: Users, title: 'Clear Communication', description: 'I share concept sketches at every stage to ensure the final artwork aligns perfectly with your vision.' },
+    { icon: Clock, title: 'Flexible Commercial Use', description: 'Clear usage rights included, whether it’s a personal portrait gift or a custom business card design.' },
+    { icon: Heart, title: 'Keeping Memories Safe', description: 'Whimsical designs crafted to capture your real milestones and turn special memories into art.' },
   ];
 
   return (
@@ -48,7 +48,7 @@ const About: React.FC = () => {
                 Specialties
               </h3>
               <div className="grid grid-cols-2 gap-3">
-                {['Digital Illustration', 'Portrait Art', 'Character Design', 'Concept Art'].map((skill) => (
+                {['Digital Illustration', 'Portrait Art', 'Character Design', 'Merchandising & Print Design'].map((skill) => (
                   <div
                     key={skill}
                     style={{
@@ -96,7 +96,7 @@ const About: React.FC = () => {
                   zIndex: 1,
                 }}
               >
-                <img src={arjun} alt="Arjun Bhatia" className="w-full h-full object-cover" />
+                <img src={suhani} alt="Suhani Killa" className="w-full h-full object-cover" />
               </div>
               <div
                 style={{
@@ -110,7 +110,7 @@ const About: React.FC = () => {
                   textAlign: 'center',
                 }}
               >
-                <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.8rem', fontWeight: 600, color: 'var(--vanilla)' }}>1+</div>
+                <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.8rem', fontWeight: 600, color: 'var(--vanilla)' }}>2+</div>
                 <div style={{ fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--tobacco)', fontFamily: 'DM Sans, sans-serif' }}>Years Creating</div>
               </div>
             </div>
