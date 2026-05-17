@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
                     fontSize: "0.95rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    fontFamily: "DM Sans, sans-serif",
+                    fontFamily: "Playfair Display, serif",
                     fontWeight: 400,
                     cursor: "pointer",
                     display: "flex",
@@ -151,7 +151,7 @@ const Hero: React.FC = () => {
                     fontSize: "0.95rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
-                    fontFamily: "DM Sans, sans-serif",
+                    fontFamily: "'Playfair Display', serif",
                     fontWeight: 400,
                     cursor: "pointer",
                   }}
