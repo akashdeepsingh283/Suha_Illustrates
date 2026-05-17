@@ -48,7 +48,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
       }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="w-full px-6 lg:px-12">
         <div className="flex justify-between items-center h-16">
           {/* Logo — wordmark style */}
           <Link to="/" className="flex items-center space-x-3 group">
@@ -69,14 +69,14 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             </div>
             <span
               style={{
-                fontFamily: 'Cormorant Garamond, serif',
+                fontFamily: "'Beth Ellen', cursive",
                 fontSize: '1.2rem',
                 fontWeight: 600,
                 letterSpacing: '0.04em',
                 color: 'var(--mahogany)',
               }}
             >
-              Snoopyydoodles
+              Suha Scribbles
             </span>
           </Link>
 
@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 400, fontFamily: 'DM Sans, sans-serif' }}
+                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 400, fontFamily: "'Playfair Display', serif" }}
                   className="hover:opacity-60 transition-opacity"
                 >
                   {item.label}
@@ -99,7 +99,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, setIsLoggedIn }) => {
                   onClick={(e) => {
                     if (item.onClick) { e.preventDefault(); item.onClick(); }
                   }}
-                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 400, fontFamily: 'DM Sans, sans-serif' }}
+                  style={{ color: 'var(--mahogany)', fontSize: '0.82rem', letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 400, fontFamily: "'Playfair Display', serif" }}
                   className="hover:opacity-60 transition-opacity"
                 >
                   {item.label}
