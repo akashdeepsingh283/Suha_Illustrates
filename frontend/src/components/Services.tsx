@@ -45,7 +45,12 @@ const Services: React.FC = () => {
         <div className="text-center mb-10 sm:mb-16">
           <div className="flex items-center justify-center space-x-3 mb-4">
             <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
-            <span style={{ color: 'var(--tobacco)', fontSize: '0.72rem', letterSpacing: '0.18em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif' }}>
+            <span style={{ color: "var(--tobacco)",
+                  fontSize: "clamp(0.65rem, 2.2vw, 0.95rem)",
+                  letterSpacing: "0.15em",
+                  textTransform: "uppercase",
+                  fontFamily: "'Playfair Display', serif",
+                  fontWeight: 700, }}>
               What I Offer
             </span>
             <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />

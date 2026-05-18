@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-3 mb-4">
               <div
                 style={{
-                  width: 34,
-                  height: 34,
+                  width: 32,
+                  height: 32,
                   borderRadius: '50%',
                   border: '1px solid var(--tobacco)',
                   display: 'flex',
@@ -40,12 +40,12 @@ const Footer: React.FC = () => {
                 <span style={{ fontFamily: 'Cormorant Garamond, serif', fontStyle: 'italic', fontSize: 14, color: 'var(--vanilla)' }}>S</span>
               </div>
               <div>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 4vw, 1.4rem)', fontWeight: 600, letterSpacing: '0.02em', color: 'var(--vanilla)' }}>
-                  Snoopyydoodles
+                <h3 style={{ fontFamily: "'Beth Ellen', cursive", fontSize: 'clamp(1.1rem, 4vw, 1.2rem)', fontWeight: 600, letterSpacing: '0.02em', color: 'var(--vanilla)' }}>
+                  Suha Scribbles
                 </h3>
-                <p style={{ fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--tobacco)', fontFamily: 'DM Sans, sans-serif' }}>
+                {/* <p style={{ fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--tobacco)', fontFamily: 'DM Sans, sans-serif' }}>
                   Freelance Artist
-                </p>
+                </p> */}
               </div>
             </div>
 
@@ -84,7 +84,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.05rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1rem' }}>
+            <h4 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.05rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1rem' }}>
               Navigate
             </h4>
             <ul className="space-y-2">
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
                 <li key={i}>
                   <a
                     href={link.href}
-                    style={{ color: 'var(--sand)', fontSize: '0.85rem', fontFamily: 'DM Sans, sans-serif', fontWeight: 300, transition: 'color 0.2s' }}
+                    style={{ color: 'var(--sand)', fontSize: '0.85rem', fontFamily: 'Playfair Display, serif', fontWeight: 300, transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.color = 'var(--vanilla)')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'var(--sand)')}
                   >
@@ -104,15 +104,15 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Services */}
-          <div>
-            <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.05rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1rem' }}>
+            <div>
+              <h4 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.05rem', fontWeight: 600, color: 'var(--vanilla)', marginBottom: '1rem' }}>
               Services
             </h4>
-            <ul className="space-y-2" style={{ color: 'var(--sand)', fontSize: '0.85rem', fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
-              <li>Digital Illustrations</li>
-              <li>Portrait Commissions</li>
-              <li>Character Design</li>
-              <li>Concept Art</li>
+            <ul className="space-y-2" style={{ color: 'var(--sand)', fontSize: '0.85rem', fontFamily: 'Playfair Display, serif', fontWeight: 300 }}>
+              <li>Digital Art</li>
+              <li>Portraits</li>
+              <li>Pet Illustrations</li>
+              <li>Custom Prints</li>
             </ul>
           </div>
         </div>
@@ -123,7 +123,7 @@ const Footer: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left"
         >
           <span style={{ fontSize: '0.75rem', color: 'var(--mountain)', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0.02em' }}>
-            © 2025 Snoopyydoodles. All rights reserved.
+            © 2026 Suha Scribbles. All rights reserved.
           </span>
           <div className="flex space-x-5">
             {['Privacy Policy', 'Terms of Service'].map((t) => (
