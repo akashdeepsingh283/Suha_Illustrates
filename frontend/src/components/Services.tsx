@@ -134,12 +134,14 @@ const Services: React.FC = () => {
           <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.5rem, 5vw, 2rem)', fontWeight: 600, color: 'var(--mahogany)', textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
             My Creative Process
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8">
             {[
               { step: '01', title: 'Consultation', desc: 'We discuss your vision and requirements' },
               { step: '02', title: 'Concept', desc: 'Initial sketches and concept exploration' },
               { step: '03', title: 'Creation', desc: 'Your artwork comes to life with precision' },
-              { step: '04', title: 'Delivery', desc: 'Final files in your preferred format' },
+              { step: '04', title: 'Review', desc: 'Back and forth feedback regarding design /changes.' },
+              { step: '05', title: 'Delivery', desc: 'Final files in your preferred format' },
+              
             ].map((item, i) => (
               <div key={i} style={{ textAlign: 'center' }}>
                 <div
@@ -154,10 +156,10 @@ const Services: React.FC = () => {
                     marginBottom: '0.75rem',
                   }}
                 >
-                  <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '0.95rem', fontWeight: 600, color: 'var(--mahogany)' }}>{item.step}</span>
+                  <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem', fontWeight: 600, color: 'var(--mahogany)' }}>{item.step}</span>
                 </div>
-                <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', fontWeight: 600, color: 'var(--mahogany)', marginBottom: 4 }}>{item.title}</h4>
-                <p style={{ fontSize: 'clamp(0.72rem, 2vw, 0.78rem)', color: 'var(--text-muted)', fontFamily: 'DM Sans, sans-serif', fontWeight: 300, lineHeight: 1.6 }}>{item.desc}</p>
+                <h4 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(0.95rem, 3vw, 1.3rem)', fontWeight: 600, color: 'var(--mahogany)', marginBottom: 4 }}>{item.title}</h4>
+                <p style={{ fontSize: 'clamp(0.72rem, 2vw, 0.95rem)', color: 'var(--text-muted)', fontFamily: 'DM Sans, sans-serif', fontWeight: 300, lineHeight: 1.6 }}>{item.desc}</p>
               </div>
             ))}
           </div>
