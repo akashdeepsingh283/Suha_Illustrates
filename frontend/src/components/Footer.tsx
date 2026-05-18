@@ -1,14 +1,11 @@
 import React from 'react';
 import { Instagram, Linkedin, Mail } from 'lucide-react';
-import { FaWhatsapp, FaBehance } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const socialLinks = [
-    { icon: Instagram, href: 'https://www.instagram.com/snoopyydoodles?igsh=Z2U0ZmVwcngyZ3pj', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/suha_scribbles?igsh=YjI1NmV0ZjUwN2Zj', label: 'Instagram' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/arjun-bhatia-322bb0341', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:snoopyydoodles@gmail.com', label: 'Email' },
-    { icon: FaWhatsapp, href: 'https://wa.me/9368776711', label: 'WhatsApp' },
-    { icon: FaBehance, href: 'https://www.behance.net/arjunbhatia7', label: 'Behance' },
+    { icon: Mail, href: 'suhaniiiwork@gmail.com', label: 'Email' },
   ];
 
   const quickLinks = [

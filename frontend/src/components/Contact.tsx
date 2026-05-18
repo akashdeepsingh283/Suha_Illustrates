@@ -58,7 +58,7 @@ const Contact: React.FC<ContactProps> = ({ isLoggedIn }) => {
 
   const contactInfo = [
     { icon: Mail, title: 'Email', value: 'suhaniiiwork@gmail.com', link: 'mailto:suhaniiiwork@gmail.com' },
-    { icon: Phone, title: 'Phone', value: '+91 9879336299', link: 'tel:+919879336299' },
+    // { icon: Phone, title: 'Phone', value: '+91 --------', link: '' },
     { icon: MapPin, title: 'Location', value: 'Gujarat, India', link: 'https://maps.google.com/?q=Gujarat, India' },
   ];
 
