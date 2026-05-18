@@ -92,7 +92,7 @@ app.post("/order", async (req, res) => {
           <tr style="background-color: #f9f9f9;"><td style="padding: 8px; font-weight: bold;">Budget Range:</td><td style="padding: 8px;">${budget}</td></tr>
           <tr><td style="padding: 8px; font-weight: bold;">Project Details:</td><td style="padding: 8px; white-space: pre-wrap;">${message}</td></tr>
         </table>
-        <p style="margin-top: 30px;">📅 <strong>Submitted on:</strong> ${new Date().toLocaleString()}</p>
+        <p style="margin-top: 30px;">📅 <strong>Submitted on:</strong> ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
         <hr style="margin-top: 40px;" />
         <p style="font-size: 0.9em; color: #888;">This message was sent from the contact form on your portfolio website.</p>
       </div>
