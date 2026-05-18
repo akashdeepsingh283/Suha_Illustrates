@@ -115,7 +115,7 @@ const Contact: React.FC<ContactProps> = ({ isLoggedIn }) => {
               {/* Project + Budget row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 {[
-                  { id: 'project', label: 'Project Type', options: [{ v: '', l: 'Select type' }, { v: 'portrait', l: 'Portrait Commission' }, { v: 'illustration', l: 'Digital Illustration' }, { v: 'character', l: 'Character Design' }, { v: 'other', l: 'Other' }] },
+                  { id: 'project', label: 'Project Type', options: [{ v: '', l: 'Select type' }, { v: 'portrait', l: 'Portrait Commission' }, { v: 'illustration', l: 'Digital Illustration' }, { v: 'character', l: 'Character Design' },{ v: 'branding', l: 'Branding/Logo Design' }, { v: 'other', l: 'Other' }] },
                   { id: 'budget', label: 'Budget Range', options: [{ v: '', l: 'Select range' }, { v: 'under-500', l: 'Under ₹500' }, { v: '500-1000', l: '₹500 – ₹1,000' }, { v: '1000-2500', l: '₹1,000 – ₹2,000' }, { v: 'over-2500', l: 'Over ₹2,000' }] },
                 ].map(f => (
                   <div key={f.id}>
