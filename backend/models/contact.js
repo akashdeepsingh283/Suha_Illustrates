@@ -17,7 +17,7 @@ const ContactSchema = new mongoose.Schema({
 
 projecttype: {
   type: String,
-  enum: ['portrait', 'illustration', 'character', 'other'],
+  enum: ['portrait', 'illustration', 'character','branding/ logo design', 'other'],
   required: true,
 },
 Budgetrange: {
