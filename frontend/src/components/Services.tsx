@@ -1,39 +1,25 @@
 import React from 'react';
-import { Palette, User, Layers, Zap, CheckCircle } from 'lucide-react';
+import { Palette, User, Layers } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
 
 const Services: React.FC = () => {
   const services = [
     {
       icon: Palette,
-      title: 'Digital Illustrations',
-      description: 'Custom digital artwork for books, magazines, and personal projects',
-      price: 'From $100',
-      features: ['High-resolution files', 'Multiple revisions', 'Commercial license', '48-hour delivery'],
+      title: 'Custom Character & Brand Design',
+      description: 'Bringing unique personalities to life. From expressive character sheets and quirky line art doodles to bespoke illustrative logo designs built for modern brands.',
       popular: false,
     },
     {
       icon: User,
-      title: 'Portrait Commissions',
-      description: 'Personalized portraits that capture personality and emotion',
-      price: 'From $50',
-      features: ['Multiple subjects', 'Various styles available', 'Print-ready quality', 'Digital delivery'],
+      title: 'Whimsical Digital Illustrations',
+      description: 'Vibrant, story-driven digital artwork tailored seamlessly for real-world products—including custom book covers, notebook surfaces, frames, and business merchandise.',
       popular: true,
     },
     {
       icon: Layers,
-      title: 'Character Design',
-      description: 'Unique character creation for games, stories, and branding',
-      price: 'From $100',
-      features: ['Concept variations', 'Turnaround sheets', 'Style consistency', 'Full licensing'],
-      popular: false,
-    },
-    {
-      icon: Zap,
-      title: 'Rush Orders',
-      description: 'Express delivery for urgent projects without compromising quality',
-      price: '+50% fee',
-      features: ['24-hour delivery', 'Priority support', 'Real-time updates', 'Quality guarantee'],
+      title: 'Memory & Portrait Commissions',
+      description: 'Custom human and pet illustrations that translate real milestones into timeless art. Specializing in sentimental family integrations, seamlessly weaving together departed loved ones into cherished, cohesive portraits.',
       popular: false,
     },
   ];
@@ -51,20 +37,20 @@ const Services: React.FC = () => {
                   textTransform: "uppercase",
                   fontFamily: "'Playfair Display', serif",
                   fontWeight: 700, }}>
-              What I Offer
+              MY SERVICES
             </span>
             <div style={{ width: 40, height: 1, background: 'var(--tobacco)' }} />
           </div>
           <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.2rem, 8vw, 3.8rem)', fontWeight: 400, color: 'var(--mahogany)' }}>
-            My <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Services</em>
+            Creative <em style={{ fontStyle: 'italic', fontWeight: 600 }}>Offerings</em>
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)', maxWidth: 560, margin: '1rem auto 0', lineHeight: 1.75, fontFamily: 'DM Sans, sans-serif', fontWeight: 300, padding: '0 8px' }}>
-            A comprehensive range of artistic services, each approached with dedication and attention to detail.
+          <p style={{ color: 'var(--text-muted)', fontSize: 'clamp(0.85rem, 2.5vw, 0.95rem)', maxWidth: 560, margin: '1rem auto 0', lineHeight: 1.75, fontFamily: 'Playfair Display, serif', fontWeight: 300, padding: '0 8px' }}>
+            Bespoke digital artwork and meaningful visual designs tailored to preserve your finest memories and stories
           </p>
         </div>
 
-        {/* Grid — 1 col mobile, 2 col tablet, 4 col desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 mb-10 sm:mb-16">
+        {/* Grid — 1 col mobile, 2 col tablet, 3 col desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-10 sm:mb-16">
           {services.map((s, i) => (
             <div
               key={i}
@@ -75,17 +61,19 @@ const Services: React.FC = () => {
                 padding: 'clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem)',
                 position: 'relative',
                 transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                display: 'flex',
+                flexDirection: 'column',
               }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(88,71,56,0.12)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
             >
-              {s.popular && (
-                <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', backgroundColor: 'var(--tobacco)', color: 'var(--vanilla)', padding: '4px 16px', borderRadius: 1, fontSize: '0.65rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif', whiteSpace: 'nowrap' }}>
+              {/* {s.popular && (
+                <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', backgroundColor: 'var(--tobacco)', color: 'var(--vanilla)', padding: '4px 16px', borderRadius: 1, fontSize: 'rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'Playfair Display, serif', whiteSpace: 'nowrap' }}>
                   Most Popular
                 </div>
-              )}
+              )} */}
 
-              <div style={{ marginBottom: '1.2rem', textAlign: 'center' }}>
+              <div style={{ marginBottom: '1.2rem', textAlign: 'center', flex: 1 }}>
                 <div
                   style={{
                     width: 44,
@@ -101,25 +89,13 @@ const Services: React.FC = () => {
                 >
                   <s.icon size={18} color={s.popular ? 'var(--vanilla)' : 'var(--mahogany)'} />
                 </div>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 3vw, 1.2rem)', fontWeight: 600, color: s.popular ? 'var(--vanilla)' : 'var(--mahogany)', marginBottom: 6 }}>
+                <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.1rem, 3vw, 1.4rem)', fontWeight: 600, color: s.popular ? 'var(--vanilla)' : 'var(--mahogany)', marginBottom: 6 }}>
                   {s.title}
                 </h3>
-                <p style={{ fontSize: 'clamp(0.75rem, 2vw, 0.8rem)', color: s.popular ? 'var(--sand)' : 'var(--text-muted)', lineHeight: 1.6, fontFamily: 'DM Sans, sans-serif', fontWeight: 300, marginBottom: '0.75rem' }}>
+                <p style={{ fontSize: 'clamp(0.75rem, 2vw, 1rem)', color: s.popular ? 'var(--sand)' : 'var(--text-muted)', lineHeight: 1.6, fontFamily: 'DM Sans, sans-serif', fontWeight: 300,marginTop: '2rem' }}>
                   {s.description}
                 </p>
-                <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', fontWeight: 700, color: s.popular ? 'var(--tobacco)' : 'var(--mahogany)' }}>
-                  {s.price}
-                </div>
               </div>
-
-              <ul className="space-y-2 mb-5">
-                {s.features.map((f, fi) => (
-                  <li key={fi} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <CheckCircle size={12} color={s.popular ? 'var(--tobacco)' : 'var(--mahogany)'} style={{ flexShrink: 0 }} />
-                    <span style={{ fontSize: 'clamp(0.72rem, 2vw, 0.78rem)', color: s.popular ? 'var(--sand)' : 'var(--text-muted)', fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>{f}</span>
-                  </li>
-                ))}
-              </ul>
 
               <HashLink to="/#contact">
                 <button
@@ -130,8 +106,8 @@ const Services: React.FC = () => {
                     fontSize: '0.75rem',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    fontFamily: 'DM Sans, sans-serif',
-                    fontWeight: 400,
+                    fontFamily: 'Playfair Display, serif',
+                    fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
                     backgroundColor: s.popular ? 'var(--tobacco)' : 'transparent',
@@ -144,6 +120,13 @@ const Services: React.FC = () => {
               </HashLink>
             </div>
           ))}
+        </div>
+
+        {/* Rush Orders Box */}
+        <div style={{ backgroundColor: 'var(--sand)', border: '1px solid var(--tobacco)', borderRadius: 4, padding: 'clamp(1.2rem, 4vw, 1.8rem)', marginBottom: 'clamp(2rem, 5vw, 3rem)', textAlign: 'center' }}>
+          <p style={{ fontSize: 'clamp(0.9rem, 2.5vw, 1.25rem)', color: 'var(--mahogany)', fontFamily: 'Playfair Display, sans-serif', fontWeight: 400, margin: 0, letterSpacing: '0.3px' }}>
+            <span style={{ fontSize: '2em', marginRight: '0.5rem' }}>⏱</span> Need it sooner? Express 48-hour turnaround available for urgent projects.
+          </p>
         </div>
 
         {/* Process */}

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Instagram, Linkedin, Mail } from 'lucide-react';
+import { Instagram, Mail } from 'lucide-react';
+import { FaPinterest } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const socialLinks = [
     { icon: Instagram, href: 'https://www.instagram.com/suha_scribbles?igsh=YjI1NmV0ZjUwN2Zj', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/arjun-bhatia-322bb0341', label: 'LinkedIn' },
-    { icon: Mail, href: 'suhaniiiwork@gmail.com', label: 'Email' },
+    { icon: FaPinterest, href: 'https://pin.it/7MAYHweT5', label: 'Pinterest' },
+    { icon: Mail, href: 'mailto:suhaniiiwork@gmail.com', label: 'Email' },
   ];
 
   const quickLinks = [
