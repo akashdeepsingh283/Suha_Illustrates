@@ -49,7 +49,7 @@ const Footer: React.FC = () => {
 
             <p style={{ color: 'var(--sand)', fontSize: 'clamp(0.82rem, 2.5vw, 0.9rem)', lineHeight: 1.8, maxWidth: 360, fontFamily: 'DM Sans, sans-serif', fontWeight: 300 }}>
               Creating beautiful, meaningful art that captures emotions and tells stories.
-              Based in Agra, India — working with clients worldwide.
+              Based in Gujarat, India — working with clients worldwide.
             </p>
 
             <div className="flex flex-wrap gap-2 mt-5">
